@@ -5,6 +5,7 @@
   text-align: center;
 }
 
+/* TODO 1: Update color values to meet WCAG 2.1 AA standards for high contrast */
 .normal-contrast {
   background-color: #d3d3d3;
   color: #000000;
@@ -15,22 +16,15 @@
   color: #333333;
 }
 
+/* TODO 2: Style the button appropriately for both contrast modes, including clear focus styles for keyboard navigation */
 .contrast-toggle-button {
   padding: 10px 20px;
   margin-bottom: 20px;
 }
 
+/* TODO 3: Ensure text is readable in both contrast modes */
 .sample-text {
   margin-top: 20px;
 }
 
-/* TODOs */
-/* TODO 1: Update color values to meet WCAG 2.1 AA standards for high contrast */
-/* TODO 2: Style the button appropriately for both contrast modes */
-/* TODO 3: Ensure text is readable in both contrast modes */
-/* TODO 4: Add styles for different text sizes */
-
-/* Bugs */
-/* Bug 1: The current color combinations don't meet accessibility standards */
-/* Bug 2: The button lacks clear focus styles for keyboard navigation */
-/* Bug 3: There's no consideration for different text sizes */
+/* TODO 4: Add styles for different text sizes to improve readability */
