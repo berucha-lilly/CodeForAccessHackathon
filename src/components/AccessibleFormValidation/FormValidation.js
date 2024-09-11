@@ -22,13 +22,13 @@ function FormValidation() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO: Implement validation logic to check if input is empty
-    if (inputValue.trim() === '') {
+    if (inputValue.trim() != '') {
       setErrorMessage('This field is required.');
     } else {
       setErrorMessage('');
       // TODO: Implement form submission logic or further processing
-      alert('Form submitted successfully!');
     }
+    alert('Form submitted successfully!');
   };
 
   return (
@@ -45,7 +45,7 @@ function FormValidation() {
       <button type="submit">Submit</button>
       {/* TODO: Ensure error message is accessible and announced by screen readers */}
       {errorMessage && (
-        <span id="error-message" role="alert" style={{ color: 'red' }}>
+        <span id="error-message" role="alert" style={{ color: 'white' }}>
           {errorMessage}
         </span>
       )}
