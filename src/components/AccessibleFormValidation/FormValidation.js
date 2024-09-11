@@ -3,6 +3,7 @@
 // Objective: Create a simple form with real-time, accessible error messaging. Ensure error messages are clear, descriptive, screen-reader friendly, and visually displayed without relying solely on color.
 
 import React, { useState } from 'react';
+import './FormValidation.css'; // Assume we have a separate CSS file for styles
 
 function FormValidation() {
   // State to manage input value and error message
@@ -12,10 +13,7 @@ function FormValidation() {
   // Handle input changes
   const handleChange = (e) => {
     setInputValue(e.target.value);
-    // Clear error when the user starts typing
-    if (errorMessage) {
-      setErrorMessage('');
-    }
+    // TODO: Implement real-time validation here
   };
 
   // Handle form submission
@@ -23,12 +21,12 @@ function FormValidation() {
     e.preventDefault();
     // TODO: Debug validation logic to ensure input is correctly validated
     // Bug 1: Fix the bug in the line below - validation should trigger error when input is empty
-    if (inputValue.trim() === '') {
+    if (inputValue !== '') {
       setErrorMessage('This field is required.');
-      // Bug 2: Find correct positioning for the alert statement below to only trigger on successful submission
     } else {
       setErrorMessage('');
-      alert('Form submitted successfully!'); // Consider relocating this to correctly align with validation logic
+      // Bug 2: Find correct positioning for the alert statement below to only trigger on successful submission
+      alert('Form submitted successfully!');
       // TODO: Implement further processing of valid form input
     }
   };
@@ -41,13 +39,12 @@ function FormValidation() {
         type="text"
         value={inputValue}
         onChange={handleChange}
-        aria-invalid={!!errorMessage} // Indicates invalid state to screen readers
-        aria-describedby="error-message" // Links input to error message for screen readers
+        // TODO: Add appropriate ARIA attributes for accessibility
       />
       <button type="submit">Submit</button>
-      {/* TODO: Bug 3: Ensure error message has correct styles to be accessible when announced by screen readers */}
+      {/* TODO: Bug 3: Ensure error message has correct styles and ARIA attributes to be accessible */}
       {errorMessage && (
-        <span id="error-message" role="alert" style={{ color: 'white' }}>
+        <span id="error-message" style={{ color: 'red' }}>
           {errorMessage}
         </span>
       )}
