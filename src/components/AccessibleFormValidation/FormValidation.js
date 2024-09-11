@@ -8,20 +8,31 @@ import '../../css/FormValidation.css';
 function FormValidation() {
   const [inputValue, setInputValue] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState(''); // Added state for success message
 
   const handleChange = (e) => {
-    setInputValue(e.target.value);
-    // TODO 1: Implement real-time validation here
+    const value = e.target.value;
+    setInputValue(value);
+    // TODO 1 Solution: Implemented real-time validation
+    // Check if the trimmed input is empty and set error message accordingly
+    if (value.trim() === '') {
+      setErrorMessage('This field is required.');
+    } else {
+      setErrorMessage('');
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Bug 1: Fix the validation logic - it should trigger an error when input is empty
-    if (inputValue !== '') {
+    // Bug 1 Fix: Changed condition from !== to === to check for empty input
+    // Also added trim() to remove whitespace
+    if (inputValue.trim() === '') {
       setErrorMessage('This field is required.');
+      setSuccessMessage('');
     } else {
       setErrorMessage('');
-      alert('Form submitted successfully!');
+      setSuccessMessage('Form submitted successfully!'); // Set success message instead of alert
+      setInputValue(''); // Clear input after successful submission
     }
   };
 
@@ -33,15 +44,32 @@ function FormValidation() {
         type="text"
         value={inputValue}
         onChange={handleChange}
+        aria-invalid={errorMessage !== ''} // Added to indicate invalid input
+        aria-describedby={errorMessage ? 'error-message' : undefined} // Links input to error message
       />
       <button type="submit">Submit</button>
-      {/* Bug 2: The error message lacks proper accessibility attributes */}
+      {/* Bug 2 Fix: Replaced span with div, added accessibility attributes */}
       {errorMessage && (
-        <span id="error-message" style={{ color: 'red' }}>
+        <div 
+          id="error-message" 
+          className="error-message" 
+          role="alert"
+          aria-live="assertive"
+        >
           {errorMessage}
-        </span>
+        </div>
       )}
-      {/* TODO 2: Add success message display */}
+      {/* TODO 2 Solution: Added success message display */}
+      {successMessage && (
+        <div 
+          id="success-message" 
+          className="success-message" 
+          role="status"
+          aria-live="polite"
+        >
+          {successMessage}
+        </div>
+      )}
     </form>
   );
 }
