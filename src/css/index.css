@@ -5,10 +5,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  /* Base Styles for Body */
-  body {
+}
+
+/* Base Styles for Body */
+body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     background-color: #ffffff;
@@ -17,10 +17,10 @@
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  
-  /* Accessibility Helper Classes */
-  .visually-hidden {
+}
+
+/* Accessibility Helper Classes */
+.visually-hidden {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -29,28 +29,28 @@
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
-  }
-  
-  /* Headings */
-  h1, h2, h3, h4, h5, h6 {
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     margin-bottom: 1rem;
-  }
-  
-  /* Links */
-  a {
+}
+
+/* Links */
+a {
     color: #007bff;
     text-decoration: none;
-  }
-  
-  a:focus,
-  a:hover {
+}
+
+a:focus,
+a:hover {
     text-decoration: underline;
     outline: 2px solid #ffbf47; /* High contrast outline for accessibility */
-  }
-  
-  /* Buttons */
-  button {
+}
+
+/* Buttons */
+button {
     font: inherit;
     background-color: #007bff;
     color: white;
@@ -59,55 +59,33 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  button:focus,
-  button:hover {
+}
+
+button:focus,
+button:hover {
     background-color: #0056b3;
     outline: 3px solid #ffbf47; /* High contrast outline for better focus visibility */
-  }
-  
-  /* TODO: Implement styles for High Contrast Mode */
-  /* Example: 
-  .high-contrast {
-    background-color: #000000;
-    color: #ffffff;
-  }
-  */
-  
-  /* TODO: Style error messages for form validation */
-  /* Example: 
-  .error-message {
-    color: #d9534f;
-    margin-top: 5px;
-    font-size: 14px;
-  }
-  .error-message[role="alert"] {
-    border-left: 4px solid #d9534f;
-    padding-left: 10px;
-  }
-  */
-  
-  /* Form Styles */
-  form {
+}
+
+/* Form Styles */
+form {
     margin-top: 20px;
-  }
-  
-  input,
-  select,
-  textarea {
+}
+
+input,
+select,
+textarea {
     font: inherit;
     padding: 8px;
     border: 2px solid #ddd;
     border-radius: 4px;
     margin-bottom: 10px;
     width: 100%;
-  }
-  
-  input:focus,
-  textarea:focus,
-  select:focus {
+}
+
+input:focus,
+textarea:focus,
+select:focus {
     border-color: #007bff;
     outline: 2px solid #ffbf47; /* Outline for better focus visibility */
-  }
-  
+}
