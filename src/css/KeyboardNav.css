@@ -3,21 +3,30 @@
 .keyboard-nav ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .keyboard-nav li {
-  padding: 8px;
+  padding: 10px;
   cursor: pointer;
-  /* TODO: Implement proper focus styles */
-  /* Bug 5: Focus styles are missing */
+  outline: none;
+  transition: background-color 0.3s ease;
 }
 
-.keyboard-nav .focused {
+.keyboard-nav li:focus,
+.keyboard-nav li.focused {
   background-color: #e0e0e0;
-  /* TODO: Ensure sufficient color contrast for accessibility */
-  /* Bug 6: The contrast between the background and text may not be sufficient */
+  box-shadow: 0 0 0 2px #007bff;
 }
 
-/* TODO: Add styles for keyboard focus */
-/* Bug 7: There are no distinct styles for keyboard focus vs. mouse hover */
+.keyboard-nav li:hover {
+  background-color: #f0f0f0;
+}
 
+/* Ensure the focus indicator is visible in high contrast mode */
+@media (forced-colors: active) {
+  .keyboard-nav li:focus,
+  .keyboard-nav li.focused {
+    outline: 2px solid SelectedItemText;
+  }
+}
