@@ -3,7 +3,7 @@
 // Objective: Design a navigation menu that is fully functional with keyboard controls. Users should be able to navigate through the menu using the keyboard without relying on a mouse.
 
 import React, { useState, useRef, useEffect } from 'react';
-import './KeyboardNav.css'; // Import the CSS file
+import '../../css/KeyboardNav.css'; // Import the CSS file
 
 function KeyboardNav() {
   // State to manage which menu item is currently focused
