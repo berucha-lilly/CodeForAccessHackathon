@@ -23,7 +23,7 @@ function FormValidation() {
     e.preventDefault();
     // TODO: Implement validation logic to check if input is empty
     // Bug 1: Fix the bug in line below
-    if (inputValue.trim() !== '') {
+    if (inputValue.trim() != '') {
       setErrorMessage('This field is required.');
     } else {
       setErrorMessage('');
