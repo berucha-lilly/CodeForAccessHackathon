@@ -3,7 +3,7 @@
 // Objective: Create a simple form with real-time, accessible error messaging. Ensure error messages are clear, descriptive, screen-reader friendly, and visually displayed without relying solely on color.
 
 import React, { useState } from 'react';
-import './FormValidation.css'; // Assume we have a separate CSS file for styles
+import '../../css/FormValidation.css'; // Separate file for styling
 
 function FormValidation() {
   // State to manage input value and error message
