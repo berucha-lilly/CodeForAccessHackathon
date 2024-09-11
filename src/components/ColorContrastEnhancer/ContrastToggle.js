@@ -3,7 +3,7 @@
 // Objective: Create a button that toggles between normal and high-contrast modes, improving readability for users with visual impairments.
 
 import React, { useState } from 'react';
-import './ContrastToggle.css'; // Import the CSS file
+import '../../css/ContrastToggle.css'; // Separate file for styling
 
 function ContrastToggle() {
   // State to manage high contrast mode
