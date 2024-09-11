@@ -2,7 +2,7 @@
 // Challenge: Keyboard-Friendly Navigation
 // Objective: Design a navigation menu that is fully functional with keyboard controls. Users should be able to navigate through the menu using the keyboard without relying on a mouse.
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './KeyboardNav.css'; // Import the CSS file
 
 function KeyboardNav() {
@@ -10,34 +10,48 @@ function KeyboardNav() {
   const [focusedIndex, setFocusedIndex] = useState(0);
   // Sample navigation items
   const items = ['Home', 'About', 'Services', 'Contact'];
+  // Ref for the nav element
+  const navRef = useRef(null);
 
   // Handle keyboard navigation
-  const handleKeyDown = (e) => {
-    if (e.key === 'ArrowDown') {
-      // TODO: Debug logic to move focus down the menu
-      // Bug 1: The logic is incorrect for moving down the menu
-      setFocusedIndex((prevIndex) => (prevIndex - 1) % items.length);
-    } else if (e.key === 'ArrowUp') {
-      // TODO: Implement logic to move focus up the menu
-      // Bug 2: Logic for moving up the menu is missing
-      console.log('Up arrow pressed');
-    } else if (e.key === 'Enter') {
-      // TODO: Implement item selection behavior
-      // Bug 3: The alert is not implemented correctly
-      alert('You selected an item');
+  const handleKeyDown = (e, index) => {
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setFocusedIndex((prevIndex) => (prevIndex + 1) % items.length);
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setFocusedIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
+        break;
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        alert(`You selected ${items[index]}`);
+        break;
+      default:
+        break;
     }
   };
 
+  // Focus management
+  useEffect(() => {
+    const focusedElement = navRef.current.querySelector(`li:nth-child(${focusedIndex + 1})`);
+    if (focusedElement) {
+      focusedElement.focus();
+    }
+  }, [focusedIndex]);
+
   return (
-    <nav className="keyboard-nav">
+    <nav className="keyboard-nav" ref={navRef}>
       <ul>
         {items.map((item, index) => (
           <li
             key={item}
-            // Bug 4: The tabIndex is not implemented correctly
-            tabIndex={-1}
-            onKeyDown={handleKeyDown}
+            tabIndex={focusedIndex === index ? 0 : -1}
+            onKeyDown={(e) => handleKeyDown(e, index)}
             className={focusedIndex === index ? 'focused' : ''}
+            role="menuitem"
           >
             {item}
           </li>
