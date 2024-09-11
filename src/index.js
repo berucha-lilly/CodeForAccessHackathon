@@ -7,7 +7,7 @@ import App from './App';   // This is the main component of our application
 // Creating a root for our React application
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// Render our App component
+// Rendering our App component
 // React.StrictMode is a tool for highlighting potential problems in an application
 root.render(
   <React.StrictMode>
