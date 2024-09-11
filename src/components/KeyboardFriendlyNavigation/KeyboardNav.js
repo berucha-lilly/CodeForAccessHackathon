@@ -14,7 +14,8 @@ function KeyboardNav() {
   const handleKeyDown = (e) => {
     if (e.key === 'ArrowDown') {
       // TODO: Implement logic to move focus down the menu
-      setFocusedIndex((prevIndex) => (prevIndex + 1) % items.length);
+      // Bug 1: you might want to ADD to prevIndex instead of substract
+      setFocusedIndex((prevIndex) => (prevIndex - 1) % items.length);
     } else if (e.key === 'ArrowUp') {
       // TODO: Implement logic to move focus up the menu
       setFocusedIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);

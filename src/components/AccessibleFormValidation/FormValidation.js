@@ -22,11 +22,13 @@ function FormValidation() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO: Implement validation logic to check if input is empty
+    // Bug 1: Fix the bug in line below
     if (inputValue.trim() != '') {
       setErrorMessage('This field is required.');
     } else {
       setErrorMessage('');
       // TODO: Implement form submission logic or further processing
+      // Bug 2: Find correct positioning for the alret statement below
     }
     alert('Form submitted successfully!');
   };
@@ -43,7 +45,7 @@ function FormValidation() {
         aria-describedby="error-message" // Links input to error message for screen readers
       />
       <button type="submit">Submit</button>
-      {/* TODO: Ensure error message is accessible and announced by screen readers */}
+      {/* TODO: Bug 3: Ensure error message below has correct styles that it is accessible when announced by screen readers */}
       {errorMessage && (
         <span id="error-message" role="alert" style={{ color: 'white' }}>
           {errorMessage}
