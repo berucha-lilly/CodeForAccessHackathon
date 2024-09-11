@@ -1,38 +1,67 @@
 /* FormValidation.css */
-/* TODO: Improve these styles for better accessibility */
 
-form {
-    max-width: 300px;
-    margin: 0 auto;
+.form-group {
+  margin-bottom: 1rem;
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 input {
-    width: 100%;
-    padding: 5px;
-    /* TODO: Add a focus state for keyboard navigation */
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+input[aria-invalid="true"] {
+  border-color: #dc3545;
 }
 
 button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    /* TODO: Ensure sufficient color contrast */
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-/* TODO: Style error messages to be visually distinct without relying solely on color */
+button:hover,
+button:focus {
+  background-color: #0056b3;
+}
+
 .error-message {
-    color: red;
-    /* Consider adding other visual cues for errors */
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
 }
 
-/* TODO: Add styles for success messages */
+.success-message {
+  color: #28a745;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
 
-
+/* Ensure the focus indicator is visible in high contrast mode */
+@media (forced-colors: active) {
+  input:focus,
+  button:focus {
+    outline: 2px solid SelectedItemText;
+  }
+}
