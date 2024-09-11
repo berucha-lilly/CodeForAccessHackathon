@@ -16,18 +16,19 @@ function ContrastToggle() {
   return (
     <div
       style={{
-        // TODO: background Update color values to meet WCAG 2.1 AA standards for high contrast
-        // Bug 1 : Are you sure #c0c0c0 and #d3d3d3 right colours for the background? I would use a black and white. 
+        // TODO: Update background color values to meet WCAG 2.1 AA standards for high contrast.
+        // Bug 1: Are the colors #c0c0c0 and #d3d3d3 meeting high-contrast requirements? Consider using a more distinct black/white combination.
         backgroundColor: highContrast ? '#c0c0c0' : '#d3d3d3',
         color: highContrast ? '#ffffff' : '#000000',
         padding: '20px',
         textAlign: 'center'
       }}
     >
-      {/* TODO: Ensure the button is accessible with proper ARIA attributes , Bug 2: we wanna make sure that high contrast is true when pressed is ON. */}
+      {/* TODO: Ensure the button is accessible with proper ARIA attributes */}
+      {/* Bug 2: Ensure the aria-pressed attribute accurately reflects the button state (pressed when high contrast is true). */}
       <button 
         onClick={toggleContrast} 
-        aria-pressed={!highContrast} 
+        aria-pressed={highContrast} // Check that aria-pressed correctly reflects button state
         aria-label={highContrast ? 'Switch to normal contrast' : 'Switch to high contrast'}
       >
         {highContrast ? 'Switch to Normal Contrast' : 'Switch to High Contrast'}
