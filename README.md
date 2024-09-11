@@ -46,10 +46,13 @@ Each team will choose one of the following challenges:
       - **KeyboardNav.js**: Starter code for the Keyboard-Friendly Navigation challenge.
       - **instructions.md**: Instructions specific to this challenge.
 
-- **/css**  
-  Contains CSS files for general styling and specific component styles:
-  - **App.css**: Styles for the main application.
-  - **index.css**: Basic and accessibility-focused styles.
+  - **/css**  
+    Contains CSS files for general styling and specific component styles:
+    - **App.css**: Styles for the main application.
+    - **ContrastToggle.css**: Styles for the Color Contrast Enhancer component.
+    - **FormValidation.css**: Styles for the Accessible Form Validation component.
+    - **KeyboardNav.css**: Styles for the Keyboard-Friendly Navigation component.
+    - **index.css**: Basic and accessibility-focused styles.
 
 - **App.js**  
   The main application file, which includes the layout and rendering logic.
@@ -75,12 +78,12 @@ Each team will choose one of the following challenges:
 
 **Creating your own branch is critical as it allows AWS Amplify to create a unique deployment link for your team’s work. This ensures each team can see their progress live and demo their work effectively.** 
 
-1. **Open the Codespace:**
-   - Click the **Code** button on the repository's main page.
-   - Select **Open with Codespaces** and click **New Codespace**.
+1. **Open the Code:**
+   - Click the **Code** button on the repository's main page to open a Codespace or open the code in an IDE of your choosing.
+   - Select **Open with Codespaces** and click **New Codespace** if using Codespace approach.
 
-2. **Create Your Branch in Codespaces:**
-   - Once inside your Codespace, open the terminal.
+2. **Create Your Branch:**
+   - Once inside your Codespace or IDE of choosing, open the terminal.
    - Create a new branch specific to your team:
      ```
      git checkout -b team-name
@@ -91,7 +94,7 @@ Each team will choose one of the following challenges:
      ```
 
 3. **Push Your Branch to GitHub:**
-   - Once your branch is created, push it to GitHub to trigger AWS Amplify to recognize your branch for deployment:
+   - Once your branch is created, push it to the CodeForAccessHackathon GitHub repo to trigger AWS Amplify to recognize your branch for deployment:
      ```
      git push origin your-branch-name
      ```
@@ -100,11 +103,11 @@ Each team will choose one of the following challenges:
 
 1. Navigate to your assigned challenge folder (`/color-contrast-enhancer`, `/accessible-form-validation`, or `/keyboard-friendly-navigation`).
 2. Follow the instructions in the `instructions.md` file specific to your challenge.
-3. Use the provided starter code to build and test your solution.
+3. Use the provided starter code to build and test your solution or create your own files and start from scratch.
 
 ### **3. Commit and Push Your Changes Regularly**
 
-- As you work on your code, make sure to regularly commit and push your changes to keep your branch updated:
+- As you work on your code, make sure to regularly commit and push your changes to keep your branch updated. Verify that your changes pushed to the CodeForAccessHackathon GitHub repo specifically:
   ```
   git add .
   git commit -m "Describe your changes here"
@@ -113,31 +116,69 @@ Each team will choose one of the following challenges:
 
 ### **4. View Your Live Deployment Link**
 
-- AWS Amplify will automatically generate a live deployment link for your branch once it's pushed to GitHub. You will receive your unique URL from the event coordinator shortly after pushing your branch.
+- AWS Amplify will automatically generate a live deployment link for your branch once it's pushed to GitHub. Your unique URL will be added to the Deployment Links section of this README shortly after pushing your branch.
 - Use this link to view your work live and prepare for your demonstration.
 
-## **TODO Checklist**
+## **TODO/Bug Checklist**
 
-Below is a checklist of all the files containing `TODOs` that you need to address during the hackathon. Use this list to ensure you complete all required tasks:
+Use this checklist to ensure you address all required tasks and fix all intentional bugs in your chosen challenge.
 
-- **/color-contrast-enhancer/ContrastToggle.js**
-  - [ ] Implement the high-contrast mode toggling logic.
-  - [ ] Ensure button accessibility with ARIA attributes.
-  - [ ] Test with a screen reader for accessibility compliance.
+### Color Contrast Enhancer Challenge
 
-- **/accessible-form-validation/FormValidation.js**
-  - [ ] Add screen-reader-friendly error messaging using ARIA attributes.
-  - [ ] Style error messages to be visually distinct without relying solely on color.
-  - [ ] Test the form for keyboard accessibility and screen reader support.
+#### ContrastToggle.js
+- [ ] Bug 1: Fix the color values to meet WCAG 2.1 AA standards for high contrast.
+- [ ] Bug 2: Correct the `aria-pressed` attribute to accurately reflect the button state.
+- [ ] Bug 3: Add an appropriate `aria-label` to the button for better accessibility.
+- [ ] TODO: Implement the high-contrast mode toggling logic.
+- [ ] TODO: Ensure button accessibility with proper ARIA attributes.
+- [ ] TODO: Test with a screen reader for accessibility compliance.
 
-- **/keyboard-friendly-navigation/KeyboardNav.js**
-  - [ ] Implement keyboard event handlers to support navigation with Enter and Arrow keys.
-  - [ ] Style focus states for all navigable elements to make them visible.
-  - [ ] Ensure full keyboard functionality of the navigation menu.
+#### ContrastToggle.css
+- [ ] TODO: Style the button and text for both normal and high-contrast modes.
+- [ ] TODO: Ensure sufficient color contrast in both modes.
+- [ ] TODO: Implement distinct visual indicators for the current mode.
 
-- **/css/index.css**
-  - [ ] Add styles for high-contrast mode to improve readability.
-  - [ ] Style error messages for forms to be accessible and screen reader-friendly.
+### Accessible Form Validation Challenge
+
+#### FormValidation.js
+- [ ] Bug 1: Fix the validation logic to correctly handle empty inputs.
+- [ ] Bug 2: Correct the positioning of the success alert to only trigger on valid submission.
+- [ ] Bug 3: Ensure error message has correct ARIA attributes for screen readers.
+- [ ] TODO: Implement real-time validation in the `handleChange` function.
+- [ ] TODO: Add screen-reader-friendly error messaging using appropriate ARIA attributes.
+- [ ] TODO: Test the form for keyboard accessibility and screen reader support.
+
+#### FormValidation.css
+- [ ] TODO: Style error messages to be visually distinct without relying solely on color.
+- [ ] TODO: Ensure form elements have clear focus states.
+- [ ] TODO: Implement styles for both error and success states.
+
+### Keyboard-Friendly Navigation Challenge
+
+#### KeyboardNav.js
+- [ ] Bug 1: Correct the logic for moving down the menu using the down arrow key.
+- [ ] Bug 2: Implement the missing logic for moving up the menu using the up arrow key.
+- [ ] Bug 3: Fix the alert implementation for selected items.
+- [ ] Bug 4: Correct the `tabIndex` implementation for proper keyboard navigation.
+- [ ] TODO: Implement keyboard event handlers to support navigation with Enter and Arrow keys.
+- [ ] TODO: Ensure full keyboard functionality of the navigation menu.
+- [ ] TODO: Implement proper focus management when using arrow keys.
+
+#### KeyboardNav.css
+- [ ] Bug 5: Implement missing focus styles for keyboard navigation.
+- [ ] Bug 6: Ensure sufficient color contrast for focused and selected items.
+- [ ] Bug 7: Add distinct styles for keyboard focus vs. mouse hover.
+- [ ] TODO: Style focus states for all navigable elements to make them visible.
+- [ ] TODO: Implement styles that clearly indicate the current selection in the menu.
+
+### General Tasks for All Challenges
+
+- [ ] Test your implementation using keyboard-only navigation.
+- [ ] Verify that all interactive elements are reachable and operable without a mouse.
+- [ ] Check color contrast ratios using tools like WebAIM's Contrast Checker.
+- [ ] Test with screen readers to ensure all content and state changes are announced properly.
+- [ ] Ensure that the focus order is logical and follows the visual layout of the component.
+- [ ] Verify that error messages and important state changes are communicated to assistive technologies.
 
 ## **Resources**
 
