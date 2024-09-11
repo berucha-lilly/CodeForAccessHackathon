@@ -3,6 +3,7 @@
 // Objective: Design a navigation menu that is fully functional with keyboard controls. Users should be able to navigate through the menu using the keyboard without relying on a mouse.
 
 import React, { useState } from 'react';
+import './KeyboardNav.css'; // Import the CSS file
 
 function KeyboardNav() {
   // State to manage which menu item is currently focused
@@ -14,35 +15,29 @@ function KeyboardNav() {
   const handleKeyDown = (e) => {
     if (e.key === 'ArrowDown') {
       // TODO: Debug logic to move focus down the menu
-      // Bug 1: Adjust logic - should ADD to prevIndex instead of subtracting to navigate correctly down
-      setFocusedIndex((prevIndex) => (prevIndex + 1) % items.length);
+      // Bug 1: The logic is incorrect for moving down the menu
+      setFocusedIndex((prevIndex) => (prevIndex - 1) % items.length);
     } else if (e.key === 'ArrowUp') {
-      // TODO: Debug logic to move focus up the menu
-      // Bug 2: Ensure that the focus wraps correctly when reaching the top of the list; check if wrapping logic works as expected
-      setFocusedIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
+      // TODO: Implement logic to move focus up the menu
+      // Bug 2: Logic for moving up the menu is missing
+      console.log('Up arrow pressed');
     } else if (e.key === 'Enter') {
-      // TODO: Validate item selection behavior and confirm that alerts display the correct item
-      // Bug 3: Verify that the alert shows the right selected item when pressing Enter; ensure no unexpected behavior occurs
-      alert(`You selected ${items[focusedIndex]}`);
+      // TODO: Implement item selection behavior
+      // Bug 3: The alert is not implemented correctly
+      alert('You selected an item');
     }
   };
 
   return (
-    <nav>
+    <nav className="keyboard-nav">
       <ul>
         {items.map((item, index) => (
           <li
             key={item}
-            tabIndex={0}
+            // Bug 4: The tabIndex is not implemented correctly
+            tabIndex={-1}
             onKeyDown={handleKeyDown}
-            style={{
-              // TODO: Debug styling to ensure focus visibility - outline should clearly indicate focused state
-              // Bug 4: Verify that the outline is visible and consistent across all browsers; check that color contrast is sufficient for accessibility
-              backgroundColor: focusedIndex === index ? '#e0e0e0' : 'transparent',
-              padding: '8px',
-              cursor: 'pointer',
-              outline: focusedIndex === index ? '2px solid blue' : 'none' // Confirm that outline correctly highlights the focused item
-            }}
+            className={focusedIndex === index ? 'focused' : ''}
           >
             {item}
           </li>
