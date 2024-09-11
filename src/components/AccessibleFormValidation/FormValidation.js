@@ -21,16 +21,16 @@ function FormValidation() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Implement validation logic to check if input is empty
-    // Bug 1: Fix the bug in line below
-    if (inputValue.trim() != '') {
+    // TODO: Debug validation logic to ensure input is correctly validated
+    // Bug 1: Fix the bug in the line below - validation should trigger error when input is empty
+    if (inputValue.trim() === '') {
       setErrorMessage('This field is required.');
+      // Bug 2: Find correct positioning for the alert statement below to only trigger on successful submission
     } else {
       setErrorMessage('');
-      // TODO: Implement form submission logic or further processing
-      // Bug 2: Find correct positioning for the alret statement below
+      alert('Form submitted successfully!'); // Consider relocating this to correctly align with validation logic
+      // TODO: Implement further processing of valid form input
     }
-    alert('Form submitted successfully!');
   };
 
   return (
@@ -45,7 +45,7 @@ function FormValidation() {
         aria-describedby="error-message" // Links input to error message for screen readers
       />
       <button type="submit">Submit</button>
-      {/* TODO: Bug 3: Ensure error message below has correct styles that it is accessible when announced by screen readers */}
+      {/* TODO: Bug 3: Ensure error message has correct styles to be accessible when announced by screen readers */}
       {errorMessage && (
         <span id="error-message" role="alert" style={{ color: 'white' }}>
           {errorMessage}
