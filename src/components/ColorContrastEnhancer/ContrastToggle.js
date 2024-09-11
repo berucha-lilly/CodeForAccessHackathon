@@ -1,3 +1,7 @@
+// ContrastToggle.js
+// Challenge: Color Contrast Enhancer
+// Objective: Create a button that toggles between normal and high-contrast modes, improving readability for users with visual impairments.
+
 import React, { useState } from 'react';
 import '../../css/ContrastToggle.css';
 
