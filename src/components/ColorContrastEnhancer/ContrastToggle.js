@@ -14,7 +14,8 @@ function ContrastToggle() {
 
   return (
     <div className={`contrast-container ${highContrast ? 'high-contrast' : 'normal-contrast'}`}>
-      {/* Bug 1 Fixed: The aria-pressed attribute now correctly reflects the button state */}
+      {/* Bug 1 Fix: Changed aria-pressed to use the highContrast state */}
+      {/* This ensures the aria-pressed attribute correctly reflects the button's state */}
       <button 
         onClick={toggleContrast} 
         aria-pressed={highContrast}
@@ -23,11 +24,13 @@ function ContrastToggle() {
         {highContrast ? 'Switch to Normal Contrast' : 'Switch to High Contrast'}
       </button>
 
-      {/* TODO 1 Completed: Added more text elements with varying sizes to test contrast */}
-      <h1 className="sample-heading">Large Heading</h1>
-      <h2 className="sample-subheading">Subheading</h2>
       <p className="sample-text">This is a sample text to demonstrate contrast toggling.</p>
-      <small className="sample-small-text">This is smaller text for testing purposes.</small>
+
+      {/* TODO 1 Solution: Added more text elements with varying sizes to test contrast */}
+      <h1 className="large-text">Large Heading</h1>
+      <h2 className="medium-text">Medium Heading</h2>
+      <p className="small-text">This is smaller text for testing different font sizes.</p>
+      <a href="#" className="link-text">This is a sample link</a>
     </div>
   );
 }
