@@ -3,72 +3,45 @@
 // Objective: Create a simple form with real-time, accessible error messaging. Ensure error messages are clear, descriptive, screen-reader friendly, and visually displayed without relying solely on color.
 
 import React, { useState } from 'react';
-import '../../css/FormValidation.css'; // Separate file for styling
+import '../../css/FormValidation.css';
 
 function FormValidation() {
   const [inputValue, setInputValue] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const validateInput = (value) => {
-    if (value.trim() === '') {
-      setErrorMessage('This field is required. Please enter some text.');
-    } else {
-      setErrorMessage('');
-    }
-  };
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    setInputValue(value);
-    validateInput(value);
-    setIsSubmitted(false);
+    setInputValue(e.target.value);
+    // TODO 1: Implement real-time validation here
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    validateInput(inputValue);
-
-    if (inputValue.trim() !== '') {
-      setIsSubmitted(true);
+    // Bug 1: Fix the validation logic - it should trigger an error when input is empty
+    if (inputValue !== '') {
+      setErrorMessage('This field is required.');
+    } else {
+      setErrorMessage('');
       alert('Form submitted successfully!');
-      // Further processing of valid form input can be implemented here
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate>
-      <div className="form-group">
-        <label htmlFor="inputField">Enter text:</label>
-        <input
-          id="inputField"
-          type="text"
-          value={inputValue}
-          onChange={handleChange}
-          aria-invalid={!!errorMessage}
-          aria-describedby={errorMessage ? "error-message" : undefined}
-        />
-      </div>
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="inputField">Enter text:</label>
+      <input
+        id="inputField"
+        type="text"
+        value={inputValue}
+        onChange={handleChange}
+      />
       <button type="submit">Submit</button>
+      {/* Bug 2: The error message lacks proper accessibility attributes */}
       {errorMessage && (
-        <div 
-          id="error-message" 
-          className="error-message" 
-          role="alert"
-          aria-live="assertive"
-        >
+        <span id="error-message" style={{ color: 'red' }}>
           {errorMessage}
-        </div>
+        </span>
       )}
-      {isSubmitted && !errorMessage && (
-        <div 
-          className="success-message" 
-          role="status"
-          aria-live="polite"
-        >
-          Form submitted successfully!
-        </div>
-      )}
+      {/* TODO 2: Add success message display */}
     </form>
   );
 }
