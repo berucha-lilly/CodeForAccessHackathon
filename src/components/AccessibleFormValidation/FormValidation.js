@@ -1,3 +1,7 @@
+// FormValidation.js
+// Challenge: Accessible Form Validation
+// Objective: Create a simple form with real-time, accessible error messaging. Ensure error messages are clear, descriptive, screen-reader friendly, and visually displayed without relying solely on color.
+
 import React, { useState } from 'react';
 import '../../css/FormValidation.css';
 
