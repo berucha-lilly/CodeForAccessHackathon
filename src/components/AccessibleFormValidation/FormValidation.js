@@ -16,7 +16,7 @@ function FormValidation() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Bug 1: Fix the validation logic - it should trigger an error when input is empty
+    // Bug 1: The validation logic is incorrect - it triggers an error when input is not empty
     if (inputValue !== '') {
       setErrorMessage('This field is required.');
     } else {
