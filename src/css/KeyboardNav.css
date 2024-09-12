@@ -8,16 +8,12 @@
 .keyboard-nav li {
   padding: 8px;
   cursor: pointer;
-  /* TODO: Implement proper focus styles */
-  /* Bug 5: Focus styles are missing */
+  /* TODO 1: Implement proper focus styles for keyboard navigation. */
 }
 
 .keyboard-nav .focused {
   background-color: #e0e0e0;
-  /* TODO: Ensure sufficient color contrast for accessibility */
-  /* Bug 6: The contrast between the background and text may not be sufficient */
+  /* TODO 2: Ensure sufficient color contrast for accessibility when an item is focused. */
 }
 
-/* TODO: Add styles for keyboard focus */
-/* Bug 7: There are no distinct styles for keyboard focus vs. mouse hover */
-
+/* TODO 3: Add distinct styles for keyboard focus vs. mouse hover. */
