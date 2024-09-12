@@ -12,20 +12,21 @@
 }
 
 .high-contrast {
-  background-color: #c0c0c0;
-  color: #333333;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .contrast-toggle-button {
   /* TODO 2: Style the button appropriately for both contrast modes, including clear focus styles for keyboard navigation. */
   padding: 10px 20px;
   margin-bottom: 20px;
+  background-color: #000000;
 }
 
 .sample-text {
   /*  TODO 3: Ensure text is readable in both contrast modes. */
   margin-top: 20px;
+  font-size: 2em;
 }
 
 /* TODO 4: Add styles for different text sizes to improve readability. */
-

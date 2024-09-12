@@ -1,20 +1,20 @@
 // App.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // If you're building components from scratch, you'll need to create these files
 // in the appropriate directories and import them here
-import ContrastToggle from './components/ColorContrastEnhancer/ContrastToggle';
-import FormValidation from './components/AccessibleFormValidation/FormValidation';
-import KeyboardNav from './components/KeyboardFriendlyNavigation/KeyboardNav';
-import './css/App.css';
+import ContrastToggle from "./components/ColorContrastEnhancer/ContrastToggle";
+import FormValidation from "./components/AccessibleFormValidation/FormValidation";
+import KeyboardNav from "./components/KeyboardFriendlyNavigation/KeyboardNav";
+import "./css/App.css";
 
 function App() {
   // State to track which component is selected
-  const [activeComponent, setActiveComponent] = useState('');
+  const [activeComponent, setActiveComponent] = useState("");
 
   useEffect(() => {
     // TODO: Change the active component, modify the string below to one of:
     // 'ContrastToggle', 'FormValidation', or 'KeyboardNav'
-    const selectedComponent = 'FormValidation';
+    const selectedComponent = "ContrastToggle";
     setActiveComponent(selectedComponent);
   }, []);
 
@@ -26,9 +26,9 @@ function App() {
 
       {/* Only the selected component will be rendered */}
       {/* If building from scratch, ensure your component names match these exactly */}
-      {activeComponent === 'ContrastToggle' && <ContrastToggle />}
-      {activeComponent === 'FormValidation' && <FormValidation />}
-      {activeComponent === 'KeyboardNav' && <KeyboardNav />}
+      {/*<ContrastToggle />*/}
+      {/*<FormValidation />*/}
+      <KeyboardNav />
 
       {/* 
         If you're building from scratch, your component should:

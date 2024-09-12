@@ -2,23 +2,28 @@
 // Challenge: Keyboard-Friendly Navigation
 // Objective: Design a navigation menu that is fully functional with keyboard controls. Users should be able to navigate through the menu using the keyboard without relying on a mouse.
 
-import React, { useState } from 'react';
-import '../../css/KeyboardNav.css';
+import React, { useState } from "react";
+import "../../css/KeyboardNav.css";
 
 function KeyboardNav() {
   const [focusedIndex, setFocusedIndex] = useState(0);
-  const items = ['Home', 'About', 'Services', 'Contact'];
+  const items = ["Home", "About", "Services", "Contact"];
 
   const handleKeyDown = (e) => {
-    if (e.key === 'ArrowDown') {
+    if (e.key === "ArrowDown") {
       // Bug 1: The logic is incorrect for moving down the menu
-      setFocusedIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
-    } else if (e.key === 'ArrowUp') {
+      setFocusedIndex(
+        (prevIndex) => (prevIndex + 1 + items.length) % items.length
+      );
+    } else if (e.key === "ArrowUp") {
+      setFocusedIndex(
+        (prevIndex) => (prevIndex - 1 + items.length) % items.length
+      );
       // TODO 1: Implement logic to move focus up the menu
-      console.log('Up arrow pressed');
-    } else if (e.key === 'Enter') {
+      console.log("Up arrow pressed");
+    } else if (e.key === "Enter") {
       // Bug 2: The alert is not implemented correctly
-      alert('You selected an item');
+      alert("You selected " + items[focusedIndex]);
     }
   };
 
@@ -28,9 +33,9 @@ function KeyboardNav() {
         {items.map((item, index) => (
           <li
             key={item}
-            tabIndex={-1}
+            tabIndex={index}
             onKeyDown={handleKeyDown}
-            className={focusedIndex === index ? 'focused' : ''}
+            className={focusedIndex === index ? "focused" : ""}
           >
             {item}
           </li>
