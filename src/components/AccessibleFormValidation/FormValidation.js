@@ -18,7 +18,7 @@ function FormValidation() {
     e.preventDefault();
     // Bug 1: The validation logic is incorrect - it triggers an error when input is not empty
     if (inputValue !== '') {
-      setErrorMessage('This field is required.');
+      setErrorMessage('This field is required to move forward.');
     } else {
       setErrorMessage('');
       alert('Form submitted successfully!');
