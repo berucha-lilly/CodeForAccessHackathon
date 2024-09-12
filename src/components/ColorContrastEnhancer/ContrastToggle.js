@@ -34,7 +34,7 @@ function ContrastToggle() {
       {/* TODO: Add more text elements with varying sizes to test contrast */}
       {/* Bug 4: There's no consideration for different text sizes. Participants should add and style various text elements. */}
       <h4 classname="sample-h4">Robert is the best student!</h4>
-      <h3 classname="sample-h3">Love this! </h3>
+      <h3 classname="sample-h3">Thanks for watching our accessibility demo.</h3>
     </div>
   );
 }
