@@ -3,30 +3,40 @@
 .keyboard-nav ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
 }
 
 .keyboard-nav li {
-  padding: 10px;
+  padding: 8px;
   cursor: pointer;
+  /* TODO Solution: Implemented proper focus styles */
+  /* Bug fix 5: Added focus styles for better visibility */
   outline: none;
-  transition: background-color 0.3s ease;
 }
 
-.keyboard-nav li:focus,
-.keyboard-nav li.focused {
-  background-color: #e0e0e0;
-  box-shadow: 0 0 0 2px #007bff;
+.keyboard-nav li:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
 }
 
+.keyboard-nav .focused {
+  /* TODO Solution: Ensured sufficient color contrast for accessibility */
+  /* Bug fix 6: Improved contrast between background and text */
+  background-color: #0056b3;
+  color: #ffffff;
+}
+
+/* TODO Solution: Added styles for keyboard focus */
+/* Bug fix 7: Implemented distinct styles for keyboard focus vs. mouse hover */
 .keyboard-nav li:hover {
-  background-color: #f0f0f0;
+  background-color: #e0e0e0;
 }
 
-/* Ensure the focus indicator is visible in high contrast mode */
-@media (forced-colors: active) {
-  .keyboard-nav li:focus,
-  .keyboard-nav li.focused {
-    outline: 2px solid SelectedItemText;
-  }
+.keyboard-nav li:focus {
+  background-color: #0056b3;
+  color: #ffffff;
+}
+
+/* Additional improvement: Transition for smooth visual feedback */
+.keyboard-nav li {
+  transition: background-color 0.3s, color 0.3s;
 }
