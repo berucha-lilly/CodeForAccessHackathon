@@ -1,12 +1,11 @@
-/* ContrastToggle.css Solution*/
+/* ContrastToggle.css Solution */
 
 .contrast-container {
   padding: 20px;
   text-align: center;
 }
 
-/* TODO Solution: Updated color values to meet WCAG 2.1 AA standards for high contrast */
-/* Bug fix 1: Implemented color combinations that meet accessibility standards */
+/* TODO 1 Solution: Updated color values to meet WCAG 2.1 AA standards for high contrast */
 .normal-contrast {
   background-color: #ffffff;
   color: #000000;
@@ -17,8 +16,8 @@
   color: #ffffff;
 }
 
+/* TODO 2 Solution: Styled the button appropriately for both contrast modes, including clear focus styles for keyboard navigation */
 .contrast-toggle-button {
-  /* TODO Solution: Styled the button appropriately for both contrast modes */
   padding: 10px 20px;
   margin-bottom: 20px;
   background-color: #0056b3;
@@ -27,12 +26,10 @@
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  /* Bug fix 5: Added clear focus styles for keyboard navigation */
-  outline: none;
 }
 
 .contrast-toggle-button:focus {
-  outline: 2px solid #ffffff;
+  outline: 2px solid #0056b3;
   outline-offset: 2px;
 }
 
@@ -46,15 +43,14 @@
   outline-color: #ffffff;
 }
 
+/* TODO 3 Solution: Ensured text is readable in both contrast modes */
 .sample-text {
-  /* TODO Solution: Ensured text is readable in both contrast modes */
   margin-top: 20px;
   font-size: 16px;
   line-height: 1.5;
 }
 
-/* TODO Solution: Added styles for different text sizes */
-/* Bug fix 4: Implemented consideration for different text sizes */
+/* TODO 4 Solution: Added styles for different text sizes to improve readability */
 .text-size-small {
   font-size: 14px;
 }
