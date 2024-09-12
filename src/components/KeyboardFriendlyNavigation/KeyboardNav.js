@@ -11,14 +11,11 @@ function KeyboardNav() {
 
   const handleKeyDown = (e) => {
     if (e.key === 'ArrowDown') {
-      // Bug 1: The logic is incorrect for moving down the menu
-      setFocusedIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
+      setFocusedIndex((prevIndex) => (prevIndex + 1) % items.length);
     } else if (e.key === 'ArrowUp') {
-      // TODO 1: Implement logic to move focus up the menu
-      console.log('Up arrow pressed');
+      setFocusedIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
     } else if (e.key === 'Enter') {
-      // Bug 2: The alert is not implemented correctly
-      alert('You selected an item');
+      alert(`You selected: ${items[focusedIndex]}`);
     }
   };
 
@@ -28,7 +25,7 @@ function KeyboardNav() {
         {items.map((item, index) => (
           <li
             key={item}
-            tabIndex={-1}
+            tabIndex={index}
             onKeyDown={handleKeyDown}
             className={focusedIndex === index ? 'focused' : ''}
           >
