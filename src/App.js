@@ -9,14 +9,7 @@ import './css/App.css';
 
 function App() {
   // State to track which component is selected
-  const [activeComponent, setActiveComponent] = useState('');
-
-  useEffect(() => {
-    // TODO: Change the active component, modify the string below to one of:
-    // 'ContrastToggle', 'FormValidation', or 'KeyboardNav'
-    const selectedComponent = 'FormValidation';
-    setActiveComponent(selectedComponent);
-  }, []);
+  const [activeComponent, setActiveComponent] = useState('ContrastToggle');
 
   return (
     <div className="App">
@@ -29,6 +22,41 @@ function App() {
       {activeComponent === 'ContrastToggle' && <ContrastToggle />}
       {activeComponent === 'FormValidation' && <FormValidation />}
       {activeComponent === 'KeyboardNav' && <KeyboardNav />}
+
+      {/* Radio buttons to select the active component */}
+      <div className="radio-group" role="radiogroup" aria-labelledby="component-selector">
+        <label id="component-selector">Select a component:</label>
+        <label>
+          <input
+            type="radio"
+            name="component"
+            value="ContrastToggle"
+            checked={activeComponent === 'ContrastToggle'}
+            onChange={() => setActiveComponent('ContrastToggle')}
+          />
+          Contrast Toggle
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="component"
+            value="FormValidation"
+            checked={activeComponent === 'FormValidation'}
+            onChange={() => setActiveComponent('FormValidation')}
+          />
+          Form Validation
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="component"
+            value="KeyboardNav"
+            checked={activeComponent === 'KeyboardNav'}
+            onChange={() => setActiveComponent('KeyboardNav')}
+          />
+          Keyboard Navigation
+        </label>
+      </div>
 
       {/* 
         If you're building from scratch, your component should:
