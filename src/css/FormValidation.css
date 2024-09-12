@@ -1,5 +1,4 @@
 /* FormValidation.css */
-/* TODO: Improve these styles for better accessibility */
 
 form {
     max-width: 300px;
@@ -14,7 +13,7 @@ label {
 input {
     width: 100%;
     padding: 5px;
-    /* TODO: Add a focus state for keyboard navigation */
+    /* TODO 1: Add a clear focus state for keyboard navigation */
 }
 
 button {
@@ -24,15 +23,15 @@ button {
     color: white;
     border: none;
     cursor: pointer;
-    /* TODO: Ensure sufficient color contrast */
+    /*  TODO 2: Ensure sufficient color contrast for the button */
 }
 
-/* TODO: Style error messages to be visually distinct without relying solely on color */
+/* TODO 3: Style error messages to be visually distinct without relying solely on color */
 .error-message {
     color: red;
     /* Consider adding other visual cues for errors */
 }
 
-/* TODO: Add styles for success messages */
+/* TODO 4: Add styles for success messages */
 
 
