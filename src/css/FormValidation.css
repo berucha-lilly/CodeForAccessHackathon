@@ -11,16 +11,19 @@ label {
 }
 
 /* TODO 1: Add a clear focus state for keyboard navigation */
-input {
+input:focus-visible {
+    outline: 2px solid #9eb7d116;
     width: 100%;
     padding: 5px;
+
+
 }
 
 /* TODO 2: Ensure sufficient color contrast for the button */
 button {
     margin-top: 10px;
     padding: 5px 10px;
-    background-color: #007bff;
+    background-color: #24cc53;
     color: white;
     border: none;
     cursor: pointer;

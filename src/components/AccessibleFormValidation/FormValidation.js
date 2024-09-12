@@ -40,7 +40,7 @@ function FormValidation() {
       <button type="submit">Submit</button>
       {/* Bug 2: The error message lacks proper accessibility attributes */}
       {errorMessage && (
-        <span id="error-message" style={{ color: 'red' }} aria-label='Error' aria-required= "true" >
+        <span id="error-message" style={{ color: 'red' }} aria-label='Error' aria-required= "true" aria-live='assertive' >
           {errorMessage}
         </span>
       )}
