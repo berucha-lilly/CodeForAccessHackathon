@@ -8,21 +8,32 @@ import '../../css/FormValidation.css';
 function FormValidation() {
   const [inputValue, setInputValue] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
-    // TODO 1: Implement real-time validation here
+    if (e.target.value === '') {
+      setErrorMessage('This field is required.');
+      setSuccessMessage('');
+    } else {
+      setErrorMessage('');
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(inputValue !== '') {
+      setSuccessMessage("Form submitted successfully!");
+      return;
+    }
+    
     // Bug 1: The validation logic is incorrect - it triggers an error when input is not empty
-    if (inputValue !== '') {
+    /* if (inputValue === '') {
       setErrorMessage('This field is required.');
     } else {
       setErrorMessage('');
       alert('Form submitted successfully!');
-    }
+    } */
   };
 
   return (
@@ -37,11 +48,15 @@ function FormValidation() {
       <button type="submit">Submit</button>
       {/* Bug 2: The error message lacks proper accessibility attributes */}
       {errorMessage && (
-        <span id="error-message" style={{ color: 'red' }}>
+        <><span class="error-icon">⚠️</span><span id="error-message" role="alert">
           {errorMessage}
+        </span></>
+      )}
+      {successMessage && (
+        <span id="success-message" role="alert">
+          {successMessage}
         </span>
       )}
-      {/* TODO 2: Add success message display */}
     </form>
   );
 }

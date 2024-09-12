@@ -20,15 +20,21 @@ input {
 button {
     margin-top: 10px;
     padding: 5px 10px;
-    background-color: #007bff;
+    background-color: #000000;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 /* TODO 3: Style error messages to be visually distinct without relying solely on color */
-.error-message {
+#error-message {
     color: red;
+    font-weight: bold;  
+    /* Consider adding other visual cues for errors */
+}
+
+#success-message {
+    color: black;
     /* Consider adding other visual cues for errors */
 }
 
