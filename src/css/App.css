@@ -32,3 +32,8 @@ button:focus {
 input:focus {
   outline: 2px solid blue;
 }
+
+.radio-group label {
+  display: inline-block;
+  margin-right: 10px;
+}
