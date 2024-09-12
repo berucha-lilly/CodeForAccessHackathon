@@ -15,10 +15,11 @@ function KeyboardNav() {
       setFocusedIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
     } else if (e.key === 'ArrowUp') {
       // TODO 1: Implement logic to move focus up the menu
+      setFocusedIndex((prevIndex) => (prevIndex + 1 + items.length) % items.length);
       console.log('Up arrow pressed');
     } else if (e.key === 'Enter') {
       // Bug 2: The alert is not implemented correctly
-      alert('You selected an item');
+      alert('You selected: ${items[focusedIndex]}');
     }
   };
 
