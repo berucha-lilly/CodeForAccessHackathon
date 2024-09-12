@@ -8,16 +8,26 @@ import '../../css/FormValidation.css';
 function FormValidation() {
   const [inputValue, setInputValue] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [realTimeValidationErr, setRealTimeValidationErr] = useState('');
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
     // TODO 1: Implement real-time validation here
+    // TODO 1: Implemented
+    if (e.target.value === '') {
+      setRealTimeValidationErr('This field is required.');
+    }
+    else {
+      setRealTimeValidationErr('');
+    }
+
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Bug 1: Resolved
     // Bug 1: The validation logic is incorrect - it triggers an error when input is not empty
-    if (inputValue !== '') {
+    if (inputValue === '') {
       setErrorMessage('This field is required.');
     } else {
       setErrorMessage('');
@@ -34,6 +44,11 @@ function FormValidation() {
         value={inputValue}
         onChange={handleChange}
       />
+      {realTimeValidationErr && (
+        <span id="real-time-error" style={{ color: 'red' }}>
+          {realTimeValidationErr}
+        </span>
+      )}
       <button type="submit">Submit</button>
       {/* Bug 2: The error message lacks proper accessibility attributes */}
       {errorMessage && (
