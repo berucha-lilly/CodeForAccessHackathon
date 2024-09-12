@@ -17,7 +17,7 @@ function FormValidation() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Bug 1: The validation logic is incorrect - it triggers an error when input is not empty
-    if (inputValue !== '') {
+    if (inputValue == '') {
       setErrorMessage('This field is required to move forward.');
     } else {
       setErrorMessage('');
