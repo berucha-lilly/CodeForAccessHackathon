@@ -1,77 +1,71 @@
-/* FormValidation.css */
-/* Improved styles for better accessibility */
+/* ContrastToggle.css */
 
-form {
-    max-width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.contrast-container {
+  padding: 20px;
+  text-align: center;
 }
 
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
+/* TODO Solution: Updated color values to meet WCAG 2.1 AA standards for high contrast */
+/* Bug fix 1: Implemented color combinations that meet accessibility standards */
+.normal-contrast {
+  background-color: #ffffff;
+  color: #000000;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    /* Added focus state for keyboard navigation */
-    outline: none;
+.high-contrast {
+  background-color: #000000;
+  color: #ffffff;
 }
 
-/* TODO Solution: Added a focus state for keyboard navigation */
-input:focus {
-    border-color: #0056b3;
-    box-shadow: 0 0 0 2px rgba(0,86,179,0.25);
+/* TODO Solution: Styled the button appropriately for both contrast modes */
+/* Bug fix 5: Added clear focus styles for keyboard navigation */
+.contrast-toggle-button {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background-color: #0056b3;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-button {
-    margin-top: 15px;
-    padding: 10px 15px;
-    /* TODO Solution: Ensured sufficient color contrast */
-    background-color: #0056b3; /* Darker blue for better contrast with white text */
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-weight: bold;
+.contrast-toggle-button:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
 }
 
-button:hover, button:focus {
-    background-color: #003d7a;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0,86,179,0.5);
+.high-contrast .contrast-toggle-button {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #ffffff;
 }
 
-/* TODO Solution: Styled error messages to be visually distinct without relying solely on color */
-.error-message {
-    color: #d32f2f;
-    background-color: #fde8e8;
-    border: 1px solid #d32f2f;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 3px;
-    font-weight: bold;
+.high-contrast .contrast-toggle-button:focus {
+  outline-color: #ffffff;
 }
 
-/* TODO Solution: Added styles for success messages */
-.success-message {
-    color: #2e7d32;
-    background-color: #e8f5e9;
-    border: 1px solid #2e7d32;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 3px;
-    font-weight: bold;
+/* TODO Solution: Ensured text is readable in both contrast modes */
+.sample-text {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-/* Additional improvement: Style for invalid input */
-input[aria-invalid="true"] {
-    border-color: #d32f2f;
-    background-color: #fff6f6;
+/* TODO Solution: Added styles for different text sizes */
+/* Bug fix 4: Implemented consideration for different text sizes */
+.text-size-small {
+  font-size: 14px;
+}
+
+.text-size-medium {
+  font-size: 16px;
+}
+
+.text-size-large {
+  font-size: 18px;
+}
+
+.text-size-extra-large {
+  font-size: 20px;
 }
