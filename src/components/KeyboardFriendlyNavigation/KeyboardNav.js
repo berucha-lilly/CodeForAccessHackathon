@@ -2,7 +2,7 @@
 // Challenge: Keyboard-Friendly Navigation
 // Objective: Design a navigation menu that is fully functional with keyboard controls. Users should be able to navigate through the menu using the keyboard without relying on a mouse.
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../../css/KeyboardNav.css';
 
 function KeyboardNav() {
