@@ -21,7 +21,7 @@ function FormValidation() {
       setErrorMessage('This field is required to move forward.');
     } else {
       setErrorMessage('');
-      alert('Form submitted successfully!');
+      alert('Form submitted successfully completed!');
     }
   };
 
