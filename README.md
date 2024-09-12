@@ -175,6 +175,7 @@ Use this checklist to ensure you address all required tasks and fix all intentio
 - [ ] TODO 1: Implement proper focus styles for keyboard navigation.
 - [ ] TODO 2: Ensure sufficient color contrast for accessibility when an item is focused.
 - [ ] TODO 3: Add distinct styles for keyboard focus vs. mouse hover.
+- [ ] TODO 4: Ensure text remains visible when both focused and hovered.
 
 ## General Tasks for All Challenges
 - [ ] Test your implementation using keyboard-only navigation.
