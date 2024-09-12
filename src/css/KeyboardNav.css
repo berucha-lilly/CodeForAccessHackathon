@@ -32,6 +32,7 @@
 
 .keyboard-nav li:focus:not(:hover) {
   background-color: #e1f5fe; /* Light blue background for keyboard focus */
+  color: initial; /* Keep the default text color on focused items */
 }
 
 /* TODO 4 Solution: Ensuring text remains visible when both focused and hovered. */
