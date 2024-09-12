@@ -8,13 +8,13 @@
 /* TODO: Update color values to meet WCAG 2.1 AA standards for high contrast */
 /* Bug 1: The current color combinations don't meet accessibility standards */
 .normal-contrast {
-  background-color: #d3d3d3;
+  background-color: #FFF;
   color: #000000;
 }
 
 .high-contrast {
-  background-color: #c0c0c0;
-  color: #333333;
+  background-color: #FFF;
+  color: #000000;
 }
 
 .contrast-toggle-button {
@@ -22,14 +22,20 @@
   padding: 10px 20px;
   margin-bottom: 20px;
   /* Bug 5: The button lacks clear focus styles for keyboard navigation */
+  outline: 5px;
 }
 
 .sample-text {
   /* TODO: Ensure text is readable in both contrast modes */
   margin-top: 20px;
+  
+  
 }
 
 /* TODO: Add styles for different text sizes */
 /* Bug 4: There's no consideration for different text sizes */
+.sample-h4 {
+  font-weight: 100;
+}
 
 
