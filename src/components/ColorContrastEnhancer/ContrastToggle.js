@@ -20,8 +20,9 @@ function ContrastToggle() {
       {/* Bug 2: The aria-pressed attribute is incorrectly implemented. */}
       <button 
         onClick={toggleContrast} 
-        aria-pressed="false" // This should dynamically change based on state
+        aria-pressed={highContrast} // This should dynamically change based on state
         // Bug 3: The aria-label is missing. Participants should add an appropriate label.
+        aria-label="highContrast"
         className="contrast-toggle-button"
       >
         {highContrast ? 'Switch to Normal Contrast' : 'Switch to High Contrast'}
@@ -32,6 +33,7 @@ function ContrastToggle() {
 
       {/* TODO: Add more text elements with varying sizes to test contrast */}
       {/* Bug 4: There's no consideration for different text sizes. Participants should add and style various text elements. */}
+      <h4 classname="sample-h4">Robert is the best student!</h4>
     </div>
   );
 }
