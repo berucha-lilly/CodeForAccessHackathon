@@ -10,7 +10,7 @@ label {
     margin-bottom: 5px;
 }
 
-/* TODO 1: Add a clear focus state for keyboard navigation */
+/* TODO 1 Solution: Added a clear focus state for keyboard navigation */
 input {
     width: 100%;
     padding: 5px;
@@ -18,26 +18,20 @@ input {
     border-radius: 3px;
 }
 
-/* Solution 1: Added a clear focus state for keyboard navigation */
 input:focus {
     outline: none;
     border-color: #0056b3;
     box-shadow: 0 0 0 2px rgba(0,86,179,0.25);
 }
 
-/* TODO 2: Ensure sufficient color contrast for the button */
+/* TODO 2 Solution: Ensured sufficient color contrast for the button */
 button {
     margin-top: 10px;
     padding: 5px 10px;
-    background-color: #007bff;
+    background-color: #0056b3; /* Darker blue for better contrast */
     color: white;
     border: none;
     cursor: pointer;
-}
-
-/* Solution 2: Ensured sufficient color contrast for the button */
-button {
-    background-color: #0056b3; /* Darker blue for better contrast */
     border-radius: 3px;
     font-weight: bold;
 }
@@ -48,12 +42,7 @@ button:hover, button:focus {
     box-shadow: 0 0 0 2px rgba(0,86,179,0.5);
 }
 
-/* TODO 3: Style error messages to be visually distinct without relying solely on color */
-.error-message {
-    color: red;
-}
-
-/* Solution 3: Styled error messages to be visually distinct without relying solely on color */
+/* TODO 3 Solution: Styled error messages to be visually distinct without relying solely on color */
 .error-message {
     color: #d32f2f;
     background-color: #fde8e8;
@@ -64,8 +53,7 @@ button:hover, button:focus {
     font-weight: bold;
 }
 
-/* TODO 4: Add styles for success messages */
-/* Solution 4: Added styles for success messages */
+/* TODO 4 Solution: Added styles for success messages */
 .success-message {
     color: #2e7d32;
     background-color: #e8f5e9;
@@ -74,10 +62,4 @@ button:hover, button:focus {
     margin-top: 5px;
     border-radius: 3px;
     font-weight: bold;
-}
-
-/* Additional improvement: Style for invalid input */
-input:invalid {
-    border-color: #d32f2f;
-    background-color: #fff6f6;
 }
