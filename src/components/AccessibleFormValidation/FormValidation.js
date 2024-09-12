@@ -9,6 +9,7 @@ function FormValidation() {
   const [inputValue, setInputValue] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [realTimeValidationErr, setRealTimeValidationErr] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -24,14 +25,17 @@ function FormValidation() {
   };
 
   const handleSubmit = (e) => {
+    const successMsg = 'Form submitted successfully!';
     e.preventDefault();
     // Bug 1: Resolved
     // Bug 1: The validation logic is incorrect - it triggers an error when input is not empty
     if (inputValue === '') {
-      setErrorMessage('This field is required.');
+      setErrorMessage('Invalid form inputs');
+      setSuccessMessage('');
     } else {
       setErrorMessage('');
-      alert('Form submitted successfully!');
+      setSuccessMessage(successMsg);
+      alert(successMsg);
     }
   };
 
@@ -45,18 +49,26 @@ function FormValidation() {
         onChange={handleChange}
       />
       {realTimeValidationErr && (
-        <span id="real-time-error" style={{ color: 'red' }}>
+        <span id="real-time-error" style={{ color: 'red' }} role='alert' aria-live="assertive">
           {realTimeValidationErr}
         </span>
       )}
+      <br/>
       <button type="submit">Submit</button>
       {/* Bug 2: The error message lacks proper accessibility attributes */}
       {errorMessage && (
-        <span id="error-message" style={{ color: 'red' }}>
+        <span id="error-message" style={{ color: 'red' }} role='alert' aria-live="assertive">
+          <br/>
           {errorMessage}
         </span>
       )}
       {/* TODO 2: Add success message display */}
+      {successMessage && (
+        <span id="success-message" style={{ color: 'green' }} role='alert' aria-live="assertive">
+          <br/>
+          {successMessage}
+        </span>
+      )}
     </form>
   );
 }
