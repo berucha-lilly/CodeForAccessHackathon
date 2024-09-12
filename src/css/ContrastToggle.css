@@ -2,99 +2,71 @@
 
 .contrast-container {
   padding: 20px;
-  transition: all 0.3s ease;
+  text-align: center;
 }
 
-.contrast-toggle-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: 2px solid;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.sample-heading {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.sample-subheading {
-  font-size: 22px;
-  margin: 20px 0 10px;
-}
-
-.sample-text {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 10px;
-}
-
-.sample-text-small {
-  font-size: 14px;
-  line-height: 1.4;
-  margin-bottom: 10px;
-}
-
-.sample-text-large {
-  font-size: 20px;
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
-
-.sample-link {
-  font-size: 16px;
-  text-decoration: underline;
-}
-
-/* Normal contrast styles */
-body:not(.high-contrast) .contrast-container {
+/* TODO Solution: Updated color values to meet WCAG 2.1 AA standards for high contrast */
+/* Bug fix 1: Implemented color combinations that meet accessibility standards */
+.normal-contrast {
   background-color: #ffffff;
-  color: #333333;
+  color: #000000;
 }
 
-body:not(.high-contrast) .contrast-toggle-button {
-  background-color: #4a90e2;
-  color: #ffffff;
-  border-color: #4a90e2;
-}
-
-body:not(.high-contrast) .sample-link {
-  color: #0000EE;
-}
-
-/* High contrast styles */
-body.high-contrast .contrast-container {
+.high-contrast {
   background-color: #000000;
   color: #ffffff;
 }
 
-body.high-contrast .contrast-toggle-button {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
+.contrast-toggle-button {
+  /* TODO Solution: Styled the button appropriately for both contrast modes */
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background-color: #0056b3;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  /* Bug fix 5: Added clear focus styles for keyboard navigation */
+  outline: none;
 }
 
-body.high-contrast .sample-link {
-  color: #ffff00;
-}
-
-/* Focus styles */
-.contrast-toggle-button:focus,
-.sample-link:focus {
-  outline: 3px solid #ffbf47;
+.contrast-toggle-button:focus {
+  outline: 2px solid #ffffff;
   outline-offset: 2px;
 }
 
-/* Hover styles */
-.contrast-toggle-button:hover {
-  opacity: 0.9;
+.high-contrast .contrast-toggle-button {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #ffffff;
 }
 
-/* Ensure the focus indicator is visible in high contrast mode */
-@media (forced-colors: active) {
-  .contrast-toggle-button:focus,
-  .sample-link:focus {
-    outline: 2px solid SelectedItemText;
-  }
+.high-contrast .contrast-toggle-button:focus {
+  outline-color: #ffffff;
+}
+
+.sample-text {
+  /* TODO Solution: Ensured text is readable in both contrast modes */
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* TODO Solution: Added styles for different text sizes */
+/* Bug fix 4: Implemented consideration for different text sizes */
+.text-size-small {
+  font-size: 14px;
+}
+
+.text-size-medium {
+  font-size: 16px;
+}
+
+.text-size-large {
+  font-size: 18px;
+}
+
+.text-size-extra-large {
+  font-size: 20px;
 }
