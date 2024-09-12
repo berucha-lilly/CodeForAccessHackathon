@@ -8,6 +8,13 @@ import '../../css/KeyboardNav.css';
 function KeyboardNav() {
   const [focusedIndex, setFocusedIndex] = useState(0);
   const items = ['Home', 'About', 'Services', 'Contact'];
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.focus();
+    }
+  }, []);
 
   const handleKeyDown = (e) => {
     if (e.key === 'ArrowDown') {
