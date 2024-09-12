@@ -8,35 +8,28 @@
 .keyboard-nav li {
   padding: 8px;
   cursor: pointer;
-  /* TODO Solution: Implemented proper focus styles */
-  /* Bug fix 5: Added focus styles for better visibility */
-  outline: none;
+  outline: none; /* Remove default focus outline */
+  transition: background-color 0.2s, box-shadow 0.2s; /* Smooth transition for focus effects */
 }
 
+/* TODO 1 Solution: Implement proper focus styles for keyboard navigation. */
 .keyboard-nav li:focus {
-  outline: 2px solid #0056b3;
-  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #4a90e2; /* Blue focus ring */
+  position: relative; /* Ensure the focus ring is visible */
+  z-index: 1; /* Bring focused item to front */
 }
 
+/* TODO 2 Solution: Ensure sufficient color contrast for accessibility when an item is focused. */
 .keyboard-nav .focused {
-  /* TODO Solution: Ensured sufficient color contrast for accessibility */
-  /* Bug fix 6: Improved contrast between background and text */
-  background-color: #0056b3;
-  color: #ffffff;
+  background-color: #2c3e50; /* Darker background for better contrast */
+  color: #ffffff; /* White text for contrast with dark background */
 }
 
-/* TODO Solution: Added styles for keyboard focus */
-/* Bug fix 7: Implemented distinct styles for keyboard focus vs. mouse hover */
+/* TODO 3 Solution: Add distinct styles for keyboard focus vs. mouse hover. */
 .keyboard-nav li:hover {
-  background-color: #e0e0e0;
+  background-color: #f0f0f0; /* Light grey background for hover */
 }
 
-.keyboard-nav li:focus {
-  background-color: #0056b3;
-  color: #ffffff;
-}
-
-/* Additional improvement: Transition for smooth visual feedback */
-.keyboard-nav li {
-  transition: background-color 0.3s, color 0.3s;
+.keyboard-nav li:focus:not(:hover) {
+  background-color: #e1f5fe; /* Light blue background for keyboard focus */
 }
