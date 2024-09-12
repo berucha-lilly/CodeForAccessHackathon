@@ -29,6 +29,7 @@ button {
 /* TODO 3: Style error messages to be visually distinct without relying solely on color */
 .error-message {
     color: red;
+    /* Consider adding other visual cues for errors */
 }
 
 /* TODO 4: Add styles for success messages */
