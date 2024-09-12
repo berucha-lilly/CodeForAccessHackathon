@@ -24,7 +24,7 @@ function FormValidation() {
       setErrorMessage('This field is required.');
     } else {
       //setErrorMessage('');
-      alert('Form submitted successfully!');
+      alert('Form submitted successfully test!');
     }
   };
 
