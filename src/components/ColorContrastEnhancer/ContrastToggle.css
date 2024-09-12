@@ -13,8 +13,8 @@
 }
 
 .high-contrast {
-  background-color: #FFF;
-  color: #000000;
+  background-color: #000000;
+  color: #FFF;
 }
 
 .contrast-toggle-button {
