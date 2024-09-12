@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     // TODO: Change the active component, modify the string below to one of:
     // 'ContrastToggle', 'FormValidation', or 'KeyboardNav'
-    const selectedComponent = 'FormValidation';
+    const selectedComponent = 'ContrastToggle';
     setActiveComponent(selectedComponent);
   }, []);
 

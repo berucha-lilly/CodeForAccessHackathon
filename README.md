@@ -155,14 +155,14 @@ Use this checklist to ensure you address all required tasks and fix all intentio
 ## Color Contrast Enhancer Challenge
 
 ### ContrastToggle.js
-- [ ] Bug 1: Fix the `aria-pressed` attribute to accurately reflect the button state.
-- [ ] TODO 1: Add more text elements with varying sizes to test contrast.
+- [X] Bug 1: Fix the `aria-pressed` attribute to accurately reflect the button state.
+- [X] TODO 1: Add more text elements with varying sizes to test contrast.
 
 ### ContrastToggle.css
-- [ ] TODO 1: Update color values to meet WCAG 2.1 AA standards for high contrast.
-- [ ] TODO 2: Style the button appropriately for both contrast modes, including clear focus styles for keyboard navigation.
-- [ ] TODO 3: Ensure text is readable in both contrast modes.
-- [ ] TODO 4: Add styles for different text sizes to improve readability.
+- [X] TODO 1: Update color values to meet WCAG 2.1 AA standards for high contrast.
+- [X] TODO 2: Style the button appropriately for both contrast modes, including clear focus styles for keyboard navigation.
+- [X] TODO 3: Ensure text is readable in both contrast modes.
+- [X] TODO 4: Add styles for different text sizes to improve readability.
 
 ## Keyboard-Friendly Navigation Challenge
 
