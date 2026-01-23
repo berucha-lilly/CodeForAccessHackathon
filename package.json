@@ -1,6 +1,7 @@
 {
   "name": "codeforaccesshackathon",
   "version": "1.0.0",
+  "type": "module",
   "description": "Welcome to the Code for Access: The Accessibility Challenge hackathon repository! This repository is designed to support participants as they work on accessibility-focused coding challenges using HTML, CSS, JavaScript, and React. Whether you're a beginner or an experienced developer, this space provides all the resources, guides, and starter code you need to participate successfully.",
   "main": "index.js",
   "scripts": {
