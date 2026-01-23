@@ -8,3 +8,6 @@ build/
 *.log
 .DS_Store
 .env
+
+# Accessibility analysis results
+.github/a11y-mcp/a11y-results.json
