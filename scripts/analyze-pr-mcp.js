@@ -3,8 +3,8 @@
  * Analyze PR files for accessibility violations using MCP server
  */
 
-import fs from 'fs';
-import { execSync } from 'child_process';
+const fs = require('fs');
+const { execSync } = require('child_process');
 
 async function analyzePR() {
   try {
