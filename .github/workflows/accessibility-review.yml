@@ -154,7 +154,7 @@ jobs:
           
           # Test MCP server connection first
           echo "🔌 Testing MCP server connection..."
-          node scripts/mcp-client.js test || {
+          node .github/a11y-mcp/mcp-client.js test || {
             echo "❌ MCP server test failed. Checking if server exists..."
             if [ ! -f "src/mcp-server.js" ]; then
               echo "❌ MCP server not found. Please ensure src/mcp-server.js exists."
@@ -165,15 +165,15 @@ jobs:
           
           # Run the hybrid analysis (production-ready)
           echo "📊 Running PR analysis with hybrid analyzer (production)..."
-          node scripts/analyze-pr-mcp.js
+          node .github/a11y-mcp/analyze-pr-mcp.js
           
           # Check results
-          if [ -f "a11y-results.json" ]; then
+          if [ -f ".github/a11y-mcp/a11y-results.json" ]; then
             echo "✅ Analysis completed successfully"
-            VIOLATIONS=$(cat a11y-results.json | jq -r '.summary.totalViolations // 0')
-            ERRORS=$(cat a11y-results.json | jq -r '.summary.errors // 0')
-            WARNINGS=$(cat a11y-results.json | jq -r '.summary.warnings // 0')
-            ANALYZED=$(cat a11y-results.json | jq -r '.analyzedFiles // 0')
+            VIOLATIONS=$(cat .github/a11y-mcp/a11y-results.json | jq -r '.summary.totalViolations // 0')
+            ERRORS=$(cat .github/a11y-mcp/a11y-results.json | jq -r '.summary.errors // 0')
+            WARNINGS=$(cat .github/a11y-mcp/a11y-results.json | jq -r '.summary.warnings // 0')
+            ANALYZED=$(cat .github/a11y-mcp/a11y-results.json | jq -r '.analyzedFiles // 0')
             
             echo "📊 Results: $VIOLATIONS total violations ($ERRORS errors, $WARNINGS warnings)"
             echo "📁 Files analyzed: $ANALYZED"
@@ -209,12 +209,12 @@ jobs:
             const fs = require('fs');
             
             // Read analysis results
-            if (!fs.existsSync('a11y-results.json')) {
+            if (!fs.existsSync('.github/a11y-mcp/a11y-results.json')) {
               console.log('⚠️  No results file found. Skipping comment.');
               return;
             }
             
-            const results = JSON.parse(fs.readFileSync('a11y-results.json', 'utf8'));
+            const results = JSON.parse(fs.readFileSync('.github/a11y-mcp/a11y-results.json', 'utf8'));
             
             // Create comment body
             let comment = `## 🔍 Accessibility Reviewer Results \n\n`;
@@ -320,7 +320,7 @@ jobs:
         with:
           name: accessibility-analysis-results
           path: |
-            a11y-results.json
+            .github/a11y-mcp/a11y-results.json
             accessibility-summary.md
           retention-days: 30
 
@@ -331,5 +331,5 @@ jobs:
           echo "🔧 Please fix the critical accessibility violations before merging"
           echo ""
           echo "Errors found:"
-          cat a11y-results.json | jq -r '.files[]?.violations[]? | select(.severity == "error") | "- \(.id) in \(.message)"'
+          cat .github/a11y-mcp/a11y-results.json | jq -r '.files[]?.violations[]? | select(.severity == "error") | "- \(.id) in \(.message)"'
           exit 1
