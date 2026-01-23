@@ -41,39 +41,79 @@ async function analyzePR() {
     // Simple regex-based analysis for now
     for (const filePath of relevantFiles) {
       const content = fs.readFileSync(filePath, 'utf8');
+      const lines = content.split('\n');
       const violations = [];
 
+      // Helper function to find line number
+      const findLineNumber = (match) => {
+        const beforeMatch = content.substring(0, match.index);
+        return beforeMatch.split('\n').length;
+      };
+
       // Check for missing alt text
-      const imgWithoutAlt = /<img[^>]*src[^>]*(?!alt=)[^>]*>/gi.exec(content);
-      if (imgWithoutAlt) {
+      let imgMatch;
+      const imgRegex = /<img[^>]*src[^>]*(?!alt=)[^>]*>/gi;
+      while ((imgMatch = imgRegex.exec(content)) !== null) {
+        const lineNum = findLineNumber(imgMatch);
         violations.push({
           id: 'img-missing-alt',
           severity: 'error',
-          message: 'Image missing alt text',
-          wcagCriteria: ['1.1.1']
+          message: 'Image missing alt attribute',
+          description: 'All images must have an alt attribute for screen readers',
+          line: lineNum,
+          wcagCriteria: ['1.1.1'],
+          fix: 'Add alt attribute with meaningful description',
+          suggestions: [
+            'Add alt="description" to the image tag',
+            'For decorative images, use alt=""',
+            'Describe what the image conveys, not just what it looks like'
+          ]
         });
+        break; // Only report first occurrence per file
       }
 
       // Check for div onClick without role
-      const divOnClick = /<div[^>]*onClick[^>]*(?!role=)[^>]*>/gi.exec(content);
-      if (divOnClick) {
+      let divMatch;
+      const divRegex = /<div[^>]*onClick[^>]*(?!role=)[^>]*>/gi;
+      while ((divMatch = divRegex.exec(content)) !== null) {
+        const lineNum = findLineNumber(divMatch);
         violations.push({
           id: 'div-button',
           severity: 'error',
           message: 'Non-semantic clickable div (use button instead)',
-          wcagCriteria: ['4.1.2']
+          description: 'Interactive elements should use semantic HTML for keyboard and screen reader accessibility',
+          line: lineNum,
+          wcagCriteria: ['4.1.2'],
+          fix: 'Replace div with button element',
+          suggestions: [
+            'Use <button onClick={handler}>Text</button> instead',
+            'If div is required, add role="button" and tabIndex={0}',
+            'Add keyboard event handlers (onKeyDown) for Enter and Space keys'
+          ]
         });
+        break; // Only report first occurrence per file
       }
 
       // Check for input without label
-      const inputWithoutLabel = /<input[^>]*(?!aria-label)[^>]*>/gi.exec(content);
-      if (inputWithoutLabel && !content.includes('<label')) {
+      let inputMatch;
+      const inputRegex = /<input[^>]*(?!aria-label)[^>]*>/gi;
+      while ((inputMatch = inputRegex.exec(content)) !== null && !content.includes('<label')) {
+        const lineNum = findLineNumber(inputMatch);
         violations.push({
           id: 'input-missing-label',
           severity: 'error',
           message: 'Input field missing associated label',
-          wcagCriteria: ['3.3.2']
+          description: 'Form inputs must have labels to help users understand their purpose',
+          line: lineNum,
+          wcagCriteria: ['3.3.2'],
+          fix: 'Add label element associated with input',
+          suggestions: [
+            'Add <label htmlFor="inputId">Label Text</label> before the input',
+            'Alternatively, use aria-label="Label Text" on the input',
+            'Wrap input in label: <label>Label Text<input /></label>'
+          ]
         });
+        break; // Only report first occurrence per file
       }
 
       const errors = violations.filter(v => v.severity === 'error').length;

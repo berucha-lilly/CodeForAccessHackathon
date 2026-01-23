@@ -217,7 +217,7 @@ jobs:
             const results = JSON.parse(fs.readFileSync('a11y-results.json', 'utf8'));
             
             // Create comment body
-            let comment = `## 🔍 Accessibility Reviewer Results (via MCP)\n\n`;
+            let comment = `## 🔍 Accessibility Reviewer Results \n\n`;
             comment += `**Powered by:** Model Context Protocol (MCP) Server\n`;
             comment += `**Files Checked:** ${results.analyzedFiles}\n`;
             comment += `**Files with Violations:** ${results.filesWithViolations}\n`;
@@ -241,9 +241,23 @@ jobs:
                     fileResult.violations.forEach((v, index) => {
                       const severityLabel = v.severity === 'error' ? '[ERROR]' : '[WARNING]';
                       comment += `${index + 1}. **${severityLabel}** ${v.message}\n`;
-                      comment += `   - **Issue:** ${v.message}\n`;
+                      if (v.line) {
+                        comment += `   - **Line:** ${v.line}\n`;
+                      }
+                      if (v.description) {
+                        comment += `   - **Issue:** ${v.description}\n`;
+                      }
+                      if (v.fix) {
+                        comment += `   - **Fix:** ${v.fix}\n`;
+                      }
                       if (v.wcagCriteria && v.wcagCriteria.length > 0) {
                         comment += `   - **WCAG:** ${v.wcagCriteria.join(', ')}\n`;
+                      }
+                      if (v.suggestions && v.suggestions.length > 0) {
+                        comment += `   - **Suggestions:**\n`;
+                        v.suggestions.forEach(suggestion => {
+                          comment += `     - ${suggestion}\n`;
+                        });
                       }
                       comment += `\n`;
                     });
@@ -269,7 +283,7 @@ jobs:
             comment += `- [Accessibility Testing Tools](https://github.com/dequelabs/axe-core)\n\n`;
             
             comment += `---\n`;
-            comment += `*Analysis performed by A11y-MCP Server using Model Context Protocol*\n`;
+            comment += `*Analysis performed by A11y-MCP Server*\n`;
             
             // Post comment to PR
             await github.rest.issues.createComment({
