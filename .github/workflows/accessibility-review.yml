@@ -223,38 +223,42 @@ jobs:
             } else {
               comment += `**Found ${results.summary.totalViolations} accessibility violation(s):**\n\n`;
               
-              // Group violations by file
-              const violationsByFile = {};
-              results.violations.forEach(v => {
-                if (!violationsByFile[v.file]) {
-                  violationsByFile[v.file] = [];
-                }
-                violationsByFile[v.file].push(v);
-              });
+              // Collect all violations from all files
+              const allViolations = [];
+              if (results.files && results.files.length > 0) {
+                results.files.forEach(fileResult => {
+                  fileResult.violations.forEach(v => {
+                    allViolations.push({
+                      ...v,
+                      file: fileResult.filePath
+                    });
+                  });
+                });
+              }
               
               if (results.summary.errors > 0) {
                 comment += `### 🔴 Critical Errors (Must Fix)\n\n`;
-                const errors = results.violations.filter(v => v.severity === 'error');
+                const errors = allViolations.filter(v => v.severity === 'error');
                 errors.forEach(v => {
-                  comment += `- **${v.title}** in \`${v.file}\` (Line ${v.line})\n`;
-                  comment += `  - ${v.description}\n`;
+                  comment += `- **${v.id}** in \`${v.file}\`\n`;
+                  comment += `  - ${v.message}\n`;
                   if (v.wcagCriteria && v.wcagCriteria.length > 0) {
                     comment += `  - WCAG: ${v.wcagCriteria.join(', ')}\n`;
                   }
-                  comment += `  - 💡 Fix: ${v.fixSuggestion || v.help}\n\n`;
+                  comment += `\n`;
                 });
               }
               
               if (results.summary.warnings > 0) {
                 comment += `### 🟡 Warnings (Recommended)\n\n`;
-                const warnings = results.violations.filter(v => v.severity === 'warning');
+                const warnings = allViolations.filter(v => v.severity === 'warning');
                 warnings.forEach(v => {
-                  comment += `- **${v.title}** in \`${v.file}\` (Line ${v.line})\n`;
-                  comment += `  - ${v.description}\n`;
+                  comment += `- **${v.id}** in \`${v.file}\`\n`;
+                  comment += `  - ${v.message}\n`;
                   if (v.wcagCriteria && v.wcagCriteria.length > 0) {
                     comment += `  - WCAG: ${v.wcagCriteria.join(', ')}\n`;
                   }
-                  comment += `  - 💡 Fix: ${v.fixSuggestion || v.help}\n\n`;
+                  comment += `\n`;
                 });
               }
               
