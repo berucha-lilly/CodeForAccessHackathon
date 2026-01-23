@@ -217,7 +217,11 @@ jobs:
             const results = JSON.parse(fs.readFileSync('a11y-results.json', 'utf8'));
             
             // Create comment body
-            let comment = `## 🔍 Accessibility Review Results (via MCP)\n\n`;
+            let comment = `## 🔍 Accessibility Reviewer Results (via MCP)\n\n`;
+            comment += `**Powered by:** Model Context Protocol (MCP) Server\n`;
+            comment += `**Files Checked:** ${results.analyzedFiles}\n`;
+            comment += `**Files with Violations:** ${results.filesWithViolations}\n`;
+            comment += `**Total Violations:** ${results.summary.totalViolations} (${results.summary.errors} errors, ${results.summary.warnings} warnings)\n\n`;
             
             if (results.summary.totalViolations === 0) {
               comment += `✅ **No accessibility violations found!**\n\n`;
@@ -227,50 +231,36 @@ jobs:
             } else {
               comment += `**Found ${results.summary.totalViolations} accessibility violation(s):**\n\n`;
               
-              // Collect all violations from all files
-              const allViolations = [];
+              // Group violations by file
               if (results.files && results.files.length > 0) {
                 results.files.forEach(fileResult => {
-                  fileResult.violations.forEach(v => {
-                    allViolations.push({
-                      ...v,
-                      file: fileResult.filePath
+                  if (fileResult.violations.length > 0) {
+                    comment += `#### 📄 \`${fileResult.filePath}\`\n\n`;
+                    comment += `Found ${fileResult.violations.length} violation(s):\n\n`;
+                    
+                    fileResult.violations.forEach((v, index) => {
+                      const severityLabel = v.severity === 'error' ? '[ERROR]' : '[WARNING]';
+                      comment += `${index + 1}. **${severityLabel}** ${v.message}\n`;
+                      comment += `   - **Issue:** ${v.message}\n`;
+                      if (v.wcagCriteria && v.wcagCriteria.length > 0) {
+                        comment += `   - **WCAG:** ${v.wcagCriteria.join(', ')}\n`;
+                      }
+                      comment += `\n`;
                     });
-                  });
+                    
+                    comment += `\n`;
+                  }
                 });
               }
               
+              comment += `### 📊 Summary by Severity\n\n`;
               if (results.summary.errors > 0) {
-                comment += `### 🔴 Critical Errors (Must Fix)\n\n`;
-                const errors = allViolations.filter(v => v.severity === 'error');
-                errors.forEach(v => {
-                  comment += `- **${v.id}** in \`${v.file}\`\n`;
-                  comment += `  - ${v.message}\n`;
-                  if (v.wcagCriteria && v.wcagCriteria.length > 0) {
-                    comment += `  - WCAG: ${v.wcagCriteria.join(', ')}\n`;
-                  }
-                  comment += `\n`;
-                });
+                comment += `- 🔴 **${results.summary.errors} Critical Error(s)** - Must fix before merging\n`;
               }
-              
               if (results.summary.warnings > 0) {
-                comment += `### 🟡 Warnings (Recommended)\n\n`;
-                const warnings = allViolations.filter(v => v.severity === 'warning');
-                warnings.forEach(v => {
-                  comment += `- **${v.id}** in \`${v.file}\`\n`;
-                  comment += `  - ${v.message}\n`;
-                  if (v.wcagCriteria && v.wcagCriteria.length > 0) {
-                    comment += `  - WCAG: ${v.wcagCriteria.join(', ')}\n`;
-                  }
-                  comment += `\n`;
-                });
+                comment += `- 🟡 **${results.summary.warnings} Warning(s)** - Recommended to fix\n`;
               }
-              
-              comment += `### 📊 Summary\n\n`;
-              comment += `- **Files Analyzed**: ${results.analyzedFiles}\n`;
-              comment += `- **Total Violations**: ${results.summary.totalViolations}\n`;
-              comment += `- **Critical Errors**: ${results.summary.errors}\n`;
-              comment += `- **Warnings**: ${results.summary.warnings}\n\n`;
+              comment += `\n`;
             }
             
             comment += `### 📚 Resources\n\n`;
