@@ -327,5 +327,5 @@ jobs:
           echo "🔧 Please fix the critical accessibility violations before merging"
           echo ""
           echo "Errors found:"
-          cat a11y-results.json | jq -r '.violations[] | select(.severity == "error") | "- \(.title) in \(.file)"'
+          cat a11y-results.json | jq -r '.files[]?.violations[]? | select(.severity == "error") | "- \(.id) in \(.message)"'
           exit 1
